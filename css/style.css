@@ -1,0 +1,94 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.canvas-wrap {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.canvas-wrap canvas {
+  display: block;
+}
+
+/* スライダーコントロールスタイル */
+.water-slider-controls {
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+.water-slider-prev,
+.water-slider-next {
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 18px;
+  cursor: pointer;
+  margin: 0 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s;
+}
+
+.water-slider-prev:hover,
+.water-slider-next:hover {
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.water-slider-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.water-slider-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  margin: 0 5px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.water-slider-dot.active {
+  background: rgba(255, 255, 255, 1);
+  transform: scale(1.2);
+}
+
+.custom-dat-gui .gui-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #e61d5f;
+  color: #fff !important;
+  font-weight: bold;
+  border-radius: 4px;
+  height: 26px;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  transition: all 0.1s;
+  cursor: pointer;
+}
+
+.custom-dat-gui .gui-button:hover {
+  background: #ff2a78;
+}
+
+/* スライダーのコントロールを非表示にする（明示的に無効化） */
+.water-slider-controls {
+  display: none !important;
+}
