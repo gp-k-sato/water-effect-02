@@ -2,6 +2,18 @@
 import WaterEffectSliderWithGUI from './modules/WaterEffectSliderWithGUI.js';
 // import WaterEffectSlider from './modules/WaterEffectSlider.js';
 
+// 画像プリロード
+function preloadImages(imagePaths) {
+  return Promise.all(imagePaths.map(path => {
+    return new Promise((resolve, reject) => {
+      const img = new Image();
+      img.onload = () => resolve(img);
+      img.onerror = reject;
+      img.src = path;
+    });
+  }));
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   const selector = '.js-canvas';
   const container = document.querySelector(selector);
@@ -15,8 +27,12 @@ document.addEventListener('DOMContentLoaded', () => {
     './images/forest_03.webp',
   ];
 
+  const texturePath = './images/texture.png';
+
+  preloadImages([...initialImages, texturePath]);
+
   const waterSlider = new WaterEffectSliderWithGUI(selector, {
-    texturePath: './images/texture.png',
+    texturePath: texturePath,
     images: initialImages,
     sliderOptions: {
       autoplay: true,
