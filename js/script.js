@@ -1,18 +1,8 @@
 
 import WaterEffectSliderWithGUI from './modules/WaterEffectSliderWithGUI.js';
 // import WaterEffectSlider from './modules/WaterEffectSlider.js';
+import { preloadImages } from './utils/ImagePreloader.js';
 
-// 画像プリロード
-function preloadImages(imagePaths) {
-  return Promise.all(imagePaths.map(path => {
-    return new Promise((resolve, reject) => {
-      const img = new Image();
-      img.onload = () => resolve(img);
-      img.onerror = reject;
-      img.src = path;
-    });
-  }));
-}
 
 document.addEventListener('DOMContentLoaded', () => {
   const selector = '.js-canvas';
@@ -29,6 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const texturePath = './images/texture.png';
 
+  // 画像をプリロード
   preloadImages([...initialImages, texturePath]);
 
   const waterSlider = new WaterEffectSliderWithGUI(selector, {
